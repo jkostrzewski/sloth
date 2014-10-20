@@ -1,0 +1,11 @@
+#############
+## Python
+#############
+
+*.py[cod]
+
+# Packages
+*.egg
+*.egg-info
+result.txt
+
