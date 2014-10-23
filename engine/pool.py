@@ -60,6 +60,6 @@ class Pool():
 	
 def get_blacklist():
 	result = []
-	for line in open('../config/blacklist.txt', 'r').readlines():
+	for line in open('blacklist.txt', 'r').readlines():
 		result.append(line.strip('\n'))
 	return result

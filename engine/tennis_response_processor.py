@@ -24,11 +24,16 @@ def process_response(robot, page, page_response):
 					for a in name_th.findAll('a'):
 						href = a['href']
 						if re.compile('/player/[\w]+').match(a['href']):
-							print a
+							#print a
 							allPlayers+=1
-						if re.compile('\./\?country=[\w\?=&]+').match(href):
-							pages.append(Page('/list-players'+href.strip('.'), page.depth-1, {'action':'find_players'}))
+					
+				for anchor in anchors:
+					if 'href' in anchor:
+						href = anchor['href']
+						print 'testing', href
+						if re.compile('\?page=[0-9]+&country=[\w]+&order=[\w]+').match(href+'\n'):
+							print 'FOUND!!!!!!!!!!!!', href
+							pages.append(Page('/list-players/'+href.strip('.'), page.depth-1, {'action':'find_players'}))
 						
 				
-		print allPlayers
 		return [], pages
