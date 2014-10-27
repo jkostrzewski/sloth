@@ -16,8 +16,16 @@ def get_text(response):
 	
 def get_hostname(root_page):
 	parsed =  urlparse(root_page)
-	result = parsed.scheme+"://"+parsed.hostname
+
+	result = str(parsed.scheme)+"://"+str(parsed.hostname)
 	return result
+
+def is_same_host(base_url, new_url):
+	if new_url.startswith('/'):
+		return True
+	if get_hostname(base_url) == get_hostname(new_url):
+		return True
+	return False
 		
 def get_anchors(page):
 	hrefs = re.findall('href="(https?://[\w\./?=+&-^ ]+[^.png^.pdf^.jpg^.css])"', page)

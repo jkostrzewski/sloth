@@ -2,7 +2,7 @@ import time
 import threading
 from http_client import *
 from db_manager import *
-from tennis_response_processor import process_response
+from forum_slang_processor import process_response
 
 
 class Robot(threading.Thread):
@@ -32,16 +32,14 @@ class Robot(threading.Thread):
 		while not self.end_search:
 			if self.check_sleep():
 				continue
-				
 			page = self.pool.get_page()
 			if page is False:
 				continue
+
 			page_response=get_page(page.url)
-			
 			if not page_response:
 				continue
 			print page.url, page.depth
-
 			data, anchors = process_response(self, page, page_response)
 			self.pool.add_pages(page, anchors)
 
