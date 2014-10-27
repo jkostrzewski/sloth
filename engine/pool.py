@@ -38,7 +38,7 @@ class Pool():
 				if hostname not in self.blacklist and item.depth>0:
 					item.depth-=1
 					self.pages.append(item)
-				
+				self.visited[item.url] = True
 		self.lock.release()
 		
 	def save_result(self, result):
