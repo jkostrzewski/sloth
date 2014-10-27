@@ -15,10 +15,9 @@ def process_response(robot, page, page_response):
 					if  anchor.has_key('href'):
 						href = anchor['href']
 						if is_same_host(page.url, href) is True:
-							pages.append(Page(href, page.depth-1, {'action':'default'}))
+							pages.append(Page(href, page.depth, {'action':'default'}))
 
-		open('result.txt', 'a+').write(text)
-		print text
+		open('C:\cygwin64\home\Kuba\working_dir\kobiety.txt', 'a+').write(text)
 						
 				
 		return [], pages
