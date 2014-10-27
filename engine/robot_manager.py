@@ -14,8 +14,8 @@ def main():
 	reload(sys)
 	sys.setdefaultencoding('utf-8')
 	
-	patterns = get_lines_from_file('data_patterns.txt')
-	start_pages_data = get_lines_from_file('start_pages.txt')	
+	patterns = get_lines_from_file('../config/data_patterns.txt')
+	start_pages_data = get_lines_from_file('../config/start_pages.txt')	
 	
 	pages = [Page(page_data[0], int(page_data[1])) for page_data in start_pages_data]
 	pool = Pool(pages)
@@ -27,6 +27,5 @@ def main():
 		except:
 			print ki
 			robo.kill()
-	
 if __name__ == '__main__':
 	main()

@@ -32,12 +32,13 @@ class Pool():
 			if item.url in self.visited:
 				continue
 			else:
+				self.visited[item.url] = True
 				if item.url.startswith('/'):
 					item.url = hostname+item.url
-				if hostname not in self.blacklist and page.depth>0:
+				if hostname not in self.blacklist and item.depth>0:
 					item.depth-=1
 					self.pages.append(item)
-				self.visited[page.url] = True
+				
 		self.lock.release()
 		
 	def save_result(self, result):
@@ -47,7 +48,7 @@ class Pool():
 				self.filewrite_buffer.append(result)
 				self.saved[result] = True
 		else:
-			f = open('result.txt', 'a+')
+			f = open('../config/result.txt', 'a+')
 			f.writelines(self.filewrite_buffer)
 			f.close()
 			self.filewrite_buffer = []
@@ -60,6 +61,6 @@ class Pool():
 	
 def get_blacklist():
 	result = []
-	for line in open('blacklist.txt', 'r').readlines():
+	for line in open('../config/blacklist.txt', 'r').readlines():
 		result.append(line.strip('\n'))
 	return result
