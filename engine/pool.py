@@ -32,6 +32,7 @@ class Pool():
 			if item.url in self.visited:
 				continue
 			else:
+				self.visited[item.url] = True
 				if item.url.startswith('/'):
 					item.url = hostname+item.url
 				if hostname not in self.blacklist and item.depth>0:
@@ -47,7 +48,7 @@ class Pool():
 				self.filewrite_buffer.append(result)
 				self.saved[result] = True
 		else:
-			f = open('result.txt', 'a+')
+			f = open('../config/result.txt', 'a+')
 			f.writelines(self.filewrite_buffer)
 			f.close()
 			self.filewrite_buffer = []

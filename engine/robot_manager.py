@@ -27,6 +27,5 @@ def main():
 		except:
 			print ki
 			robo.kill()
-	
 if __name__ == '__main__':
 	main()
