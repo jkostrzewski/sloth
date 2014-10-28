@@ -1,1 +1,2 @@
-http://f.kafeteria.pl/	9
+#http://f.kafeteria.pl/	9
+http://www.elektroda.pl/rtvforum/	5

@@ -20,7 +20,7 @@ def main():
 	pages = [Page(page_data[0], int(page_data[1])) for page_data in start_pages_data]
 	pool = Pool(pages)
 	
-	for r in range(100):
+	for r in range(10):
 		robo = robot.Robot(pool, patterns)
 		try:
 			robo.start()
